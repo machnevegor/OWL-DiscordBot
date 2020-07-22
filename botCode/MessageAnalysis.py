@@ -5,7 +5,7 @@
 # 1-mea90608744@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-# removing unnecessary words that play the role of punctuation marks
+# 2) removing unnecessary words that play the role of punctuation marks
 def simplifying_texts_for_defining_basic_commands(memory_array):
     # creating a shared array
     unnecessary_words = []
@@ -59,7 +59,7 @@ def simplifying_texts_for_defining_basic_commands(memory_array):
     print(''.join(memory_array))
 
 
-# detecting a prefix in context
+# 1) detecting a prefix in context
 def analysis_of_a_message_for_prefixes(msg):
     # creating a character-by-character array from a message
     check_for_prefixes = []
@@ -94,7 +94,7 @@ def analysis_of_a_message_for_prefixes(msg):
 
 
 bot_prefixes = ["owl", "сова"]
-union_words = ["but", "and", "а", "но", "и"]
+union_words = [",but ", " and ", ", а", ", но", ", и", " и "]
 punctuation_marks = [".", ",", ";", "!", "?"]
 msg = str.lower(input("-->"))
 analysis_of_a_message_for_prefixes(msg)
