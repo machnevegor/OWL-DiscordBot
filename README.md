@@ -1,5 +1,5 @@
 # OWL-DiscordBot
-Oh, hi Mark! We have created a bot with a special prefix recognition system. 
+Oh, hi Mark! Anyway, we have created a bot with a special prefix recognition system. 
 He also, or rather she knows how to turn on music from YouTube and show video in the broadcast 
 In directory documentation you can see our documentation. 
 
