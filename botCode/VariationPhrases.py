@@ -1,4 +1,4 @@
-# Authors of the projects:
+# Authors of the project:
 # 1-MachnevEgor_https://vk.com/machnev_egor
 # 2-DmitryShalimov_https://vk.com/lookatstat
 # Contacts in email:
@@ -17,7 +17,7 @@ eng_greetings_users = ["2"]
 ru_greetings_bot = ["11"]
 eng_greetings_bot = ["22"]
 
-# Authors of the projects:
+# Authors of the project:
 # 1-MachnevEgor_https://vk.com/machnev_egor
 # 2-DmitryShalimov_https://vk.com/lookatstat
 # Contacts in email:
