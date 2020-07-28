@@ -30,6 +30,30 @@ eng_greetings_users = ["hello", "hey", "hi", "qq", "q"]
 ru_greetings_bot = ["Здравствуй!", "Привет!", "Хай!", "Ку!", "Салам!", "Здарова!", "Дыдова!"]
 eng_greetings_bot = ["Hello!", "Hey!", "Oh, hi!", "Hi!", "Qq!", "Q!"]
 
+# what is the name of the owl from users
+ru_name_of_owl_users = ["кактебязовут", "ктоты", "какоетвоеимя", "какоетвоёимя", "кактебявеличать"]
+eng_name_of_owl_users = ["whatisyourname"]
+# reply what is the name of the owl from the bot
+ru_name_of_owl_bot = ["Хмм, не задавалась таким вопросом)", "Посмотри в пользователях)",
+                      "Некоторые друзья зовут меня М.П. Терентьев...", "Я что, какая-то шутка(?"]
+eng_name_of_owl_bot = ["Hmm, I didn't ask myself such questions)", "Look in users)", "Am I some kind of joke(?"]
+
+# who is an owl from users
+ru_who_is_an_owl_users = ["чтоты", "тычто", "тыкто", "тычьихбудешь"]
+eng_who_is_an_owl_users = ["whoareyou"]
+# reply who is an owl from the bot
+ru_who_is_an_owl_bot = [
+    "Я в своих познаниях настолько преисполнилась, что я как будто бы уже сто триллионов миллиардов лет проживаю на триллионах и трилионнах таких же серверов... Я бот)",
+    "Я бот, а ты кто?", "Я уже не человек - я бот!"]
+eng_who_is_an_owl_bot = [
+    "I've been so fulfilled in my knowledge that it's as if I've been living on trillions and trillions of servers like this for a hundred trillion servers... I am a bot)",
+    "I am a bot and who are you?"]
+
+# how old is the bot from users
+ru_how_old_is_the_bot = ["сколькотебелет", "скольколеттебе", "сколькотебегодиков", "сколькогодиковтебе",
+                         "сколькотебемесяцев", "сколькомесяцевтебе"]
+eng_how_old_is_the_bot = ["howoldareyou"]
+
 # how are you from users
 ru_how_are_you_users = ["какдела", "каксам", "какпоживаешь"]
 eng_how_are_you_users = ["howareyou", "what'sup", "how'stricks", "howwagstheworld", "howfaresit"]
@@ -46,17 +70,6 @@ ru_what_are_you_doing_bot = ["Да так, ничего особого, вклю
 eng_what_are_you_doing_bot = ["Yes, nothing special, I just turn on music on different servers...",
                               "My programmers cannot understand what the error is, so we are trying to understand...",
                               "I am just answering you)"]
-
-# who is an owl from users
-ru_who_is_an_owl_users = ["ктоты", "тыкто", "тычьихбудешь"]
-eng_who_is_an_owl_users = ["whoareyou"]
-# reply who is an owl from the bot
-ru_who_is_an_owl_bot = [
-    "Я в своих познаниях настолько преисполнилась, что я как будто бы уже сто триллионов миллиардов лет проживаю на триллионах и трилионнах таких же серверов...",
-    "Я бот, а ты кто?", "Я уже не человек - я бот!"]
-eng_who_is_an_owl_bot = [
-    "I've been so fulfilled in my knowledge that it's as if I've been living on trillions and trillions of servers like this for a hundred trillion servers...",
-    "I am a bot and who are you?"]
 
 # heads or tails from users
 ru_heads_or_tails_users = ["орелилирешка", "орёлилирешка", "подбросьмонетку", "подкиньмонетку"]

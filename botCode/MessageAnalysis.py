@@ -47,7 +47,7 @@ def distribution_of_commands_to_parts_of_the_array(memory_array):
             while quantity_checks != len(memory_array):
                 new_command_array.append(memory_array[quantity_checks])
                 quantity_checks += 1
-            msg_commands.append(''.join(new_command_array))
+            msg_commands.append("".join(new_command_array))
 
 
 # 5.3) step to remove punctuation mark if it is at the beginning of the message
@@ -244,7 +244,7 @@ def checking_for_links_in_the_message(memory_array):
                                     while quantity_checks <= spare_quantity_checks:
                                         new_array_WITH_links.append(memory_array[quantity_checks])
                                         if quantity_checks == (len(memory_array) - 1):
-                                            msg_links.append(''.join(new_array_WITH_links))
+                                            msg_links.append("".join(new_array_WITH_links))
                                             new_array_without_links.append(",")
                                             break
                                         quantity_checks += 1
