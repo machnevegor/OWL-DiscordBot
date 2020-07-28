@@ -31,7 +31,7 @@ ru_greetings_bot = ["Здравствуй!", "Привет!", "Хай!", "Ку!"
 eng_greetings_bot = ["Hello!", "Hey!", "Oh, hi!", "Hi!", "Qq!", "Q!"]
 
 # what is the name of the owl from users
-ru_name_of_owl_users = ["кактебязовут", "ктоты", "какоетвоеимя", "какоетвоёимя", "кактебявеличать"]
+ru_name_of_owl_users = ["кактебязовут", "какоетвоеимя", "какоетвоёимя", "кактебявеличать"]
 eng_name_of_owl_users = ["whatisyourname"]
 # reply what is the name of the owl from the bot
 ru_name_of_owl_bot = ["Хмм, не задавалась таким вопросом)", "Посмотри в пользователях)",
@@ -39,7 +39,8 @@ ru_name_of_owl_bot = ["Хмм, не задавалась таким вопрос
 eng_name_of_owl_bot = ["Hmm, I didn't ask myself such questions)", "Look in users)", "Am I some kind of joke(?"]
 
 # who is an owl from users
-ru_who_is_an_owl_users = ["чтоты", "тычто", "тыкто", "тычьихбудешь"]
+ru_who_is_an_owl_users = ["ктоты", "тыкто", "ктотытакой", "тыктотакой", "ктотытакая", "тыктотакая", "чтоты", "тычто",
+                          "тычьихбудешь"]
 eng_who_is_an_owl_users = ["whoareyou"]
 # reply who is an owl from the bot
 ru_who_is_an_owl_bot = [
