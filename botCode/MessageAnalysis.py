@@ -5,12 +5,7 @@
 # 1-mea90608744@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-# Everything you need to get started:
-# import MessageAnalysis
-# msg = str(input("-->"))
-# MessageAnalysis.start_message_analysis(msg)
-# print(MessageAnalysis.msg_links)
-# print(MessageAnalysis.msg_commands)
+import VariationPhrases
 
 # Everything that happens in message processing:
 # 1) detecting a prefix in context
@@ -22,19 +17,14 @@
 # 5.3) step to remove punctuation mark if it is at the beginning of the message
 # 6) distribution of commands
 
-# global output variables
-global msg_links
-msg_links = []
-global msg_commands
-msg_commands = []
-
 # main arrays
-bot_prefixes = ["owl", "сова"]
 start_of_https_links = ["https://www.youtube.com/"]
 union_words = [",but ", " and ", ", а", ", но", ", и", " и "]
-not_influencing_words = [", excuse me,", ", excuse me", ", excuse me", "excuse me,", "excuse me", ", please,",
-                         ", please", "please,", "please", ", pray,", ", pray", "pray,", "pray", ", пожалуйста,",
-                         ", пожалуйста", "пожалуйста,", "пожалуйста"]
+not_influencing_words = [", excuse me,", ", excuse me", "excuse me,", "excuse me", ", please,", ", please", "please,",
+                         "please", ", pray,", ", pray", "pray,", "pray", ", пожалуйста,", ", пожалуйста", "пожалуйста,",
+                         "пожалуйста", ", желательно,", ", желательно", "желательно,", "желательно", ", быстро,",
+                         ", быстро", "быстро,", "быстро", ", быстрей,", ", быстрей", "быстрей,", "быстрей",
+                         ", побыстрей,", ", побыстрей", "побыстрей,", "побыстрей", ", oh,", ", oh", "oh ,", "oh"]
 punctuation_marks = [".", ",", ";", "!", "?"]
 
 
@@ -273,10 +263,30 @@ def checking_for_links_in_the_message(memory_array):
 
 
 # 1) detecting a prefix in context
-def start_message_analysis(msg):
+def start_message_analysis(input_msg):
+    # global output variables
+    global addressing_the_bot
+    addressing_the_bot = bool(False)
+    global prefix_number
+    prefix_number = 0
+    global msg_commands
+    msg_commands = []
+    global msg_links
+    msg_links = []
+    # creating a general array with prefixes
+    global bot_prefixes
+    bot_prefixes = []
+    number_of_prefixes_processed = 0
+    while number_of_prefixes_processed != len(VariationPhrases.ru_bot_prefixes):
+        bot_prefixes.append(VariationPhrases.ru_bot_prefixes[number_of_prefixes_processed])
+        number_of_prefixes_processed += 1
+    number_of_prefixes_processed = 0
+    while number_of_prefixes_processed != len(VariationPhrases.eng_bot_prefixes):
+        bot_prefixes.append(VariationPhrases.eng_bot_prefixes[number_of_prefixes_processed])
+        number_of_prefixes_processed += 1
     # creating a character-by-character array from a message
     check_for_prefixes = []
-    for i in msg:
+    for i in input_msg:
         check_for_prefixes.append(i)
     # creating a loop to iterate over and find all prefixes in the message
     prefix_check = 0
@@ -299,7 +309,9 @@ def start_message_analysis(msg):
             quantity_checks += 1
         # magic
         if prefix_found == True:
+            prefix_number = prefix_check
             prefix_check = len(bot_prefixes)
+            addressing_the_bot = True
             checking_for_links_in_the_message(check_for_prefixes)
         # repeat the operation if one of the prefixes did not match
         else:
