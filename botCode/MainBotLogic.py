@@ -8,6 +8,7 @@
 import discord
 from discord.ext import commands
 from random import randint
+import datetime
 import BotConfig
 import VariationPhrases
 import MessageAnalysis
@@ -22,18 +23,38 @@ client = commands.Bot(command_prefix=VariationPhrases.bot_prefixes)
 # connection notification
 @client.event
 async def on_ready():
+    # connection information
+    print("-----------------------------")
     print("Bot launched into the network")
     print("Name in network: {}".format(client.user))
     print("ID: {}".format(client.user.id))
+    print("-----------------------------")
+    # a list of all participants who use the bot while connecting to the network
+    for guild in client.guilds:
+        if guild.name == client.user.id:
+            break
+    members = '\n - '.join([member.name for member in guild.members])
+    print(f'All the friends of the bot:\n - {members}')
+    print("-----------------------------")
 
 
 # communication with the user
 @client.event
 async def on_message(message):
-    # import new message
+    # protection for checking the message of the bot itself
+    if message.author == client.user:
+        return
+
+    # message processing and decomposition into commands
     input_msg = str(message.content)
     MessageAnalysis.start_message_analysis(input_msg)
-    print(MessageAnalysis.msg_commands)
+
+    # inbound data on demand
+    if MessageAnalysis.addressing_the_bot == True:
+        print(datetime.datetime.today())
+        print(message.author, "-->", message.content, sep="")
+        print("Commands:", MessageAnalysis.msg_commands)
+
     # create a reply message
     message_from_bot = []
 
@@ -217,7 +238,8 @@ async def on_message(message):
     # sending a summary message
     if message_from_bot != []:
         await message.channel.send(' '.join(message_from_bot))
-        print(' '.join(message_from_bot))
+        print("Response:", " ".join(message_from_bot))
+        print("-----------------------------")
 
 
 client.run(BotConfig.BotToken)
