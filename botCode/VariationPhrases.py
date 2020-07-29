@@ -35,8 +35,10 @@ ru_name_of_owl_users = ["кактебязовут", "какоетвоеимя", 
 eng_name_of_owl_users = ["whatisyourname"]
 # reply what is the name of the owl from the bot
 ru_name_of_owl_bot = ["Хмм, не задавалась таким вопросом)", "Посмотри в пользователях)",
-                      "Некоторые друзья зовут меня М.П. Терентьев...", "Я что, какая-то шутка(?"]
-eng_name_of_owl_bot = ["Hmm, I didn't ask myself such questions)", "Look in users)", "Am I some kind of joke(?"]
+                      "Некоторые друзья зовут меня М.П. Терентьев...",
+                      "Мои разработчики были настолько заняты разработкой алгоритмов, что решили забить на моё имя, но ты можешь называть меня просто Совой)"]
+eng_name_of_owl_bot = ["Hmm, I didn't ask myself such questions)", "Look in users)",
+                       "My developers were so busy developing algorithms that they decided to forget my name, but you can just call me Owl)?"]
 
 # who is an owl from users
 ru_who_is_an_owl_users = ["ктоты", "тыкто", "ктотытакой", "тыктотакой", "ктотытакая", "тыктотакая", "чтоты", "тычто",
@@ -48,7 +50,7 @@ ru_who_is_an_owl_bot = [
     "Я бот, а ты кто?", "Я уже не человек - я бот!"]
 eng_who_is_an_owl_bot = [
     "I've been so fulfilled in my knowledge that it's as if I've been living on trillions and trillions of servers like this for a hundred trillion servers... I am a bot)",
-    "I am a bot and who are you?"]
+    "I am a bot and who are you?", "I'm not a human - I'm a bot!"]
 
 # how old is the bot from users
 ru_how_old_is_the_bot = ["сколькотебелет", "скольколеттебе", "скольколет", "летсколько", "сколькотебе", "тебесколько",
@@ -78,6 +80,18 @@ eng_heads_or_tails_users = ["headsortails", "flipacoin", "flipcoin"]
 # reply heads or tails from the bot
 ru_heads_or_tails_bot = ["Такс, посмотрим...", "Хмм...", "Сейчас проверим..."]
 eng_heads_or_tails_bot = ["Hmm, let's see...", "Hmm...", "Let's check now..."]
+
+########################################################################################################################
+
+# who are your developers from users
+ru_who_are_your_developers_users = ["ктотвоиразработчики", "разработчикитвоикто", "ктотвоиразрабы", "разрабытвоикто",
+                                    "ктотебясоздал", "создалтебякто"]
+eng_who_are_your_developers_users = ["whomadeyou", "whocreatedyou", "whoareyourdevelopers"]
+# reply who are your developers from the bot
+ru_who_are_your_developers_bot = ["Да, конечно, вот они:", "Хоть они и иногда ленятся, но я их всё равно люблю:",
+                                  "Пацаны - вообще ребята:"]
+eng_who_are_your_developers_bot = ["Yes, of course, here they are:",
+                                   "Although they are sometimes lazy, I still love them:"]
 
 # Authors of the project:
 # 1-MachnevEgor_https://vk.com/machnev_egor
