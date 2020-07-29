@@ -30,12 +30,10 @@ async def on_ready():
     print("ID: {}".format(client.user.id))
     print("-----------------------------")
     # a list of all participants who use the bot while connecting to the network
-    for guild in client.guilds:
-        if guild.name == client.user.id:
-            break
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'All the friends of the bot:\n - {members}')
+    members = '\n - '.join([guild.name for guild in client.guilds])
+    print(f'All friends of the bot:\n - {members}')
     print("-----------------------------")
+
 
 
 # communication with the user
