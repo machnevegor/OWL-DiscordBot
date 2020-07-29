@@ -24,15 +24,15 @@ client = commands.Bot(command_prefix=VariationPhrases.bot_prefixes)
 @client.event
 async def on_ready():
     # connection information
-    print("-----------------------------")
+    print("-------------------------------------------------------------------")
     print("Bot launched into the network")
     print("Name in network: {}".format(client.user))
     print("ID: {}".format(client.user.id))
-    print("-----------------------------")
+    print("-------------------------------------------------------------------")
     # a list of all participants who use the bot while connecting to the network
-    members = '\n - '.join([guild.name for guild in client.guilds])
-    print(f'All friends of the bot:\n - {members}')
-    print("-----------------------------")
+    members = "\n|♡|➳".join([guild.name for guild in client.guilds])
+    print(f"|♡|All friends of the bot:\n|♡|➳{members}")
+    print("-------------------------------------------------------------------")
 
 
 
@@ -237,7 +237,7 @@ async def on_message(message):
     if message_from_bot != []:
         await message.channel.send(' '.join(message_from_bot))
         print("Response:", " ".join(message_from_bot))
-        print("-----------------------------")
+        print("-------------------------------------------------------------------")
 
 
 client.run(BotConfig.BotToken)
