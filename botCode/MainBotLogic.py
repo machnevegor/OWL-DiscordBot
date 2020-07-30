@@ -49,7 +49,7 @@ async def on_message(message):
     # inbound data on demand
     if MessageAnalysis.addressing_the_bot == True:
         print(datetime.datetime.today())
-        print(message.author, "-->", message.content, sep="")
+        print(message.guild.name, "-->", message.author, "-->", message.content, sep="")
         print("Commands:", MessageAnalysis.msg_commands)
         if MessageAnalysis.msg_links != []:
             print("Youtube-links:", ", ".join(MessageAnalysis.msg_links))
