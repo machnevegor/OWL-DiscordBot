@@ -51,11 +51,15 @@ async def on_message(message):
         print(datetime.datetime.today())
         print(message.author, "-->", message.content, sep="")
         print("Commands:", MessageAnalysis.msg_commands)
+        if MessageAnalysis.msg_links != []:
+            print("Youtube-links:", ", ".join(MessageAnalysis.msg_links))
 
     # create a reply message
     message_from_bot = []
     # the presence of the embed for the answer
     embed_from_bot = bool(False)
+    ru_developers_availability_emb = bool(False)
+    eng_developers_availability_emb = bool(False)
 
     # empty message
     # -->russian version
@@ -225,36 +229,38 @@ async def on_message(message):
     # -->russian version
     quantity_checks = 0
     while (quantity_checks != len(MessageAnalysis.msg_commands)) and (
-            MessageAnalysis.addressing_the_bot == True) and (
-            MessageAnalysis.prefix_number < len(VariationPhrases.ru_bot_prefixes)):
+            MessageAnalysis.addressing_the_bot == True):
         if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_who_are_your_developers_users:
             response_randomizer = randint(0, len(VariationPhrases.ru_who_are_your_developers_bot) - 1)
             part_output_message = VariationPhrases.ru_who_are_your_developers_bot[response_randomizer]
             message_from_bot.append(part_output_message)
             embed_from_bot = True
-            emb = discord.Embed(title="OWL-ДискордБот", colour=discord.Color.blue(), url=BotConfig.link_to_bot_site)
-            emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY")
-            emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов")
+            ru_developers_availability_emb = True
+            ru_developers_emb = discord.Embed(title="OWL-ДискордБот", colour=discord.Color.blue(),
+                                              url=BotConfig.link_to_bot_site)
+            ru_developers_emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY", inline=True)
+            ru_developers_emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов", inline=True)
             break
         quantity_checks += 1
     # -->english version
     quantity_checks = 0
     while (quantity_checks != len(MessageAnalysis.msg_commands)) and (
-            MessageAnalysis.addressing_the_bot == True) and (
-            MessageAnalysis.prefix_number >= len(VariationPhrases.ru_bot_prefixes)):
+            MessageAnalysis.addressing_the_bot == True):
         if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_who_are_your_developers_users:
             response_randomizer = randint(0, len(VariationPhrases.eng_who_are_your_developers_bot) - 1)
             part_output_message = VariationPhrases.eng_who_are_your_developers_bot[response_randomizer]
             message_from_bot.append(part_output_message)
             embed_from_bot = True
-            emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(), url=BotConfig.link_to_bot_site)
-            emb.add_field(name="Project community:", value="SM_TECHNOLOGY")
-            emb.add_field(name="Developers:", value="Machnev Egor\nDmitry Shalimov")
+            eng_developers_availability_emb = True
+            eng_developers_emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(),
+                                               url=BotConfig.link_to_bot_site)
+            eng_developers_emb.add_field(name="Project community:", value="SM_TECHNOLOGY", inline=True)
+            eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitry Shalimov", inline=True)
             break
         quantity_checks += 1
 
     # messages with delusions
-    if (message_from_bot == []) and (MessageAnalysis.addressing_the_bot == True):
+    if (message_from_bot == []) and (MessageAnalysis.addressing_the_bot == True) and (embed_from_bot != True):
         # -->russian version
         if MessageAnalysis.prefix_number < len(VariationPhrases.ru_bot_prefixes):
             response_randomizer = randint(0, len(VariationPhrases.ru_messages_with_delusions_bot) - 1)
@@ -272,9 +278,11 @@ async def on_message(message):
         print("Response:", " ".join(message_from_bot))
         print("-------------------------------------------------------------------")
 
-    # sending a embed message
-    if embed_from_bot == True:
-        await message.channel.send(embed=emb)
+    # sending embeds
+    if (ru_developers_availability_emb == True) and (embed_from_bot == True):
+        await message.channel.send(embed=ru_developers_emb)
+    if (eng_developers_availability_emb == True) and (embed_from_bot == True):
+        await message.channel.send(embed=eng_developers_emb)
 
 
 client.run(BotConfig.BotToken)
