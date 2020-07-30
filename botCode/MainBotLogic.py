@@ -241,6 +241,7 @@ async def on_message(message):
             ru_developers_emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY", inline=True)
             ru_developers_emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов", inline=True)
             break
+
         quantity_checks += 1
     # -->english version
     quantity_checks = 0
@@ -255,7 +256,7 @@ async def on_message(message):
             eng_developers_emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(),
                                                url=BotConfig.link_to_bot_site)
             eng_developers_emb.add_field(name="Project community:", value="SM_TECHNOLOGY", inline=True)
-            eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitry Shalimov", inline=True)
+            eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitriy Schalimov", inline=True)
             break
         quantity_checks += 1
 
