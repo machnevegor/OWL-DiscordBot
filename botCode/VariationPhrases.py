@@ -84,12 +84,12 @@ eng_heads_or_tails_bot = ["Hmm, let's see...", "Hmm...", "Let's check now..."]
 ########################################################################################################################
 
 # who are your developers from users
-ru_who_are_your_developers_users = ["ктотвоиразработчики", "разработчикитвоикто", "ктотвоиразрабы", "разрабытвоикто",
-                                    "ктотебясоздал", "создалтебякто"]
-eng_who_are_your_developers_users = ["whomadeyou", "whocreatedyou", "whoareyourdevelopers"]
+ru_who_are_your_developers_users = ["ктотвоиразработчики", "разработчикитвоикто", "ктотвоиразрабы",
+                                    "разрабытвоикто", "ктотебясоздал", "создалтебякто", "накоготыработаешь"]
+eng_who_are_your_developers_users = ["whomadeyou", "whocreatedyou", "whoareyourdevelopers", "whodoyouworkfor"]
 # reply who are your developers from the bot
-ru_who_are_your_developers_bot = ["Да, конечно, вот они:", "Хоть они и иногда ленятся, но я их всё равно люблю:",
-                                  "Пацаны - вообще ребята:"]
+ru_who_are_your_developers_bot = ["Да, конечно, вот они:", "Пацаны - вообще ребята:",
+                                  "Хоть они и иногда ленятся, чтобы что-то добавить или оптимизировать, но я их всё равно люблю:", ]
 eng_who_are_your_developers_bot = ["Yes, of course, here they are:",
                                    "Although they are sometimes lazy, I still love them:"]
 
