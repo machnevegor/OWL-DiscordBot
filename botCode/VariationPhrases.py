@@ -78,7 +78,7 @@ eng_what_are_you_doing_bot = ["Yes, nothing special, I just turn on music on dif
 
 # heads or tails from users
 ru_heads_or_tails_users = ["орелилирешка", "орёлилирешка", "подбросьмонетку", "подкиньмонетку"]
-eng_heads_or_tails_users = ["headsortails", "flipacoin", "flipcoin"]
+eng_heads_or_tails_users = ["headsortails", "flipacoin", "flipcoin", "flipthecoin"]
 # reply heads or tails from the bot
 ru_heads_or_tails_bot = ["Такс, посмотрим...", "Хмм...", "Сейчас проверим..."]
 eng_heads_or_tails_bot = ["Hmm, let's see...", "Hmm...", "Let's check now..."]
