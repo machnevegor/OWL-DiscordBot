@@ -20,7 +20,8 @@ eng_empty_message_bot = ["Where are you calling?", "Called me?"]
 # reply messages with delusions
 ru_messages_with_delusions_bot = ["Я конечно не Siri, но сейчас я тебя не понимаю",
                                   "Была бы у меня нейронная сеть, тогда я смогла бы что-то понять...",
-                                  "Ох уж эти ленивые разработчики...", "Я тебе не Алиса, чтобы всё понимать)"]
+                                  "Ох уж эти ленивые разработчики...", "Я тебе не Алиса, чтобы всё понимать)",
+                                  "Постой, это так не работает..."]
 eng_messages_with_delusions_bot = ["Sorry, but I can't understand you(", "Oh, those lazy developers..."]
 
 # greetings from users
@@ -47,7 +48,7 @@ eng_who_is_an_owl_users = ["whoareyou"]
 # reply who is an owl from the bot
 ru_who_is_an_owl_bot = [
     "Я в своих познаниях настолько преисполнилась, что я как будто бы уже сто триллионов миллиардов лет проживаю на триллионах и трилионнах таких же серверов... Я бот)",
-    "Я бот, а ты кто?", "Я уже не человек - я бот!"]
+    "Я бот, а ты кто?", "Я уже не человек - я бот!", "Почему у меня значок бота? - просто понравился..."]
 eng_who_is_an_owl_bot = [
     "I've been so fulfilled in my knowledge that it's as if I've been living on trillions and trillions of servers like this for a hundred trillion servers... I am a bot)",
     "I am a bot and who are you?", "I'm not a human - I'm a bot!"]
@@ -65,11 +66,12 @@ ru_how_are_you_bot = ["Нормально, а у тебя?", "Хорошо, а �
 eng_how_are_you_bot = ["I'm fine, and you?"]
 
 # what are you doing from users
-ru_what_are_you_doing_users = ["чтоделаешь", "чемзанимаешься"]
-eng_what_are_you_doing_users = ["whatareyoudoing"]
+ru_what_are_you_doing_users = ["чтоделаешь", "чемзанимаешься", "чтотыделаешь", "чемтызанимаешься"]
+eng_what_are_you_doing_users = ["whatareyoudoing", "owlhow'syourdoings"]
 # reply how are you from the bot
 ru_what_are_you_doing_bot = ["Да так, ничего особого, включаю музыку на разных серверах...",
-                             "Опять мои программисты не могут понять в чём ошибка, вот разбираемся...", "Отвечаю тебе)"]
+                             "Опять мои программисты не могут понять в чём ошибка, вот разбираемся...", "Отвечаю тебе)",
+                             "Наелась и сплю."]
 eng_what_are_you_doing_bot = ["Yes, nothing special, I just turn on music on different servers...",
                               "My programmers cannot understand what the error is, so we are trying to understand...",
                               "I am just answering you)"]
@@ -85,8 +87,10 @@ eng_heads_or_tails_bot = ["Hmm, let's see...", "Hmm...", "Let's check now..."]
 
 # who are your developers from users
 ru_who_are_your_developers_users = ["ктотвоиразработчики", "разработчикитвоикто", "ктотвоиразрабы",
-                                    "разрабытвоикто", "ктотебясоздал", "создалтебякто", "накоготыработаешь"]
-eng_who_are_your_developers_users = ["whomadeyou", "whocreatedyou", "whoareyourdevelopers", "whodoyouworkfor"]
+                                    "разрабытвоикто", "ктотвойразработчик", "разработчиктвойкто", "ктотвойразраб",
+                                    "разрабтвойкто", "ктотебясоздал", "создалтебякто", "накоготыработаешь"]
+eng_who_are_your_developers_users = ["whomadeyou", "whocreatedyou", "whoareyourdevelopers", "whoisyourdevelopers",
+                                     "whoareyourdeveloper", "whoisyourdeveloper", "whodoyouworkfor"]
 # reply who are your developers from the bot
 ru_who_are_your_developers_bot = ["Да, конечно, вот они:", "Пацаны - вообще ребята:",
                                   "Хоть они и иногда ленятся, чтобы что-то добавить или оптимизировать, но я их всё равно люблю:", ]

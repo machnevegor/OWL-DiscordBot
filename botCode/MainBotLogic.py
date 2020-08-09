@@ -24,15 +24,15 @@ client = commands.Bot(command_prefix=VariationPhrases.bot_prefixes)
 @client.event
 async def on_ready():
     # connection information
-    print("-------------------------------------------------------------------")
+    print("-----------------------------")
     print("Bot launched into the network")
     print("Name in network: {}".format(client.user))
     print("ID: {}".format(client.user.id))
-    print("-------------------------------------------------------------------")
+    print("-----------------------------")
     # a list of all participants who use the bot while connecting to the network
     members = "\n|♡|➳".join([guild.name for guild in client.guilds])
     print(f"|♡|All friends of the bot:\n|♡|➳{members}")
-    print("-------------------------------------------------------------------")
+    print("-----------------------------")
 
 
 # communication with the user
@@ -236,10 +236,6 @@ async def on_message(message):
             message_from_bot.append(part_output_message)
             embed_from_bot = True
             ru_developers_availability_emb = True
-            ru_developers_emb = discord.Embed(title="OWL-ДискордБот", colour=discord.Color.blue(),
-                                              url=BotConfig.link_to_bot_site)
-            ru_developers_emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY", inline=True)
-            ru_developers_emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов", inline=True)
             break
 
         quantity_checks += 1
@@ -253,10 +249,6 @@ async def on_message(message):
             message_from_bot.append(part_output_message)
             embed_from_bot = True
             eng_developers_availability_emb = True
-            eng_developers_emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(),
-                                               url=BotConfig.link_to_bot_site)
-            eng_developers_emb.add_field(name="Project community:", value="SM_TECHNOLOGY", inline=True)
-            eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitriy Schalimov", inline=True)
             break
         quantity_checks += 1
 
@@ -277,12 +269,20 @@ async def on_message(message):
     if message_from_bot != []:
         await message.channel.send(' '.join(message_from_bot))
         print("Response:", " ".join(message_from_bot))
-        print("-------------------------------------------------------------------")
+        print("-----------------------------")
 
     # sending embeds
     if (ru_developers_availability_emb == True) and (embed_from_bot == True):
+        ru_developers_emb = discord.Embed(title="OWL-ДискордБот", colour=discord.Color.blue(),
+                                          url=BotConfig.link_to_bot_site)
+        ru_developers_emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY", inline=True)
+        ru_developers_emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов", inline=True)
         await message.channel.send(embed=ru_developers_emb)
     if (eng_developers_availability_emb == True) and (embed_from_bot == True):
+        eng_developers_emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(),
+                                           url=BotConfig.link_to_bot_site)
+        eng_developers_emb.add_field(name="Project community:", value="SM_TECHNOLOGY", inline=True)
+        eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitriy Schalimov", inline=True)
         await message.channel.send(embed=eng_developers_emb)
 
 
