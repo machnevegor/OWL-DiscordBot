@@ -5,7 +5,7 @@
 # 1-mea90608744@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-import VariationPhrases
+import VariationPhrases as VariationPhrases
 
 # Everything that happens in message processing:
 # 1) detecting a prefix in context
@@ -24,7 +24,7 @@ not_influencing_words = [", excuse me,", ", excuse me", "excuse me,", "excuse me
                          "please", ", pray,", ", pray", "pray,", "pray", ", пожалуйста,", ", пожалуйста", "пожалуйста,",
                          "пожалуйста", ", желательно,", ", желательно", "желательно,", "желательно", ", быстро,",
                          ", быстро", "быстро,", "быстро", ", быстрей,", ", быстрей", "быстрей,", "быстрей",
-                         ", побыстрей,", ", побыстрей", "побыстрей,", "побыстрей", ", oh,", ", oh", "oh ,", "oh"]
+                         ", побыстрей,", ", побыстрей", "побыстрей,", "побыстрей", ", oh,", ", oh", "oh ,", "oh", "'"]
 punctuation_marks = [".", ",", ";", "!", "?"]
 
 
@@ -276,14 +276,12 @@ def start_message_analysis(input_msg):
     # creating a general array with prefixes
     global bot_prefixes
     bot_prefixes = []
-    number_of_prefixes_processed = 0
-    while number_of_prefixes_processed != len(VariationPhrases.ru_bot_prefixes):
-        bot_prefixes.append(VariationPhrases.ru_bot_prefixes[number_of_prefixes_processed])
-        number_of_prefixes_processed += 1
-    number_of_prefixes_processed = 0
-    while number_of_prefixes_processed != len(VariationPhrases.eng_bot_prefixes):
-        bot_prefixes.append(VariationPhrases.eng_bot_prefixes[number_of_prefixes_processed])
-        number_of_prefixes_processed += 1
+    for number_of_prefixes_processed in VariationPhrases.ctx_bot_prefixes:
+        bot_prefixes.append(number_of_prefixes_processed)
+    for number_of_prefixes_processed in VariationPhrases.ru_bot_prefixes:
+        bot_prefixes.append(number_of_prefixes_processed)
+    for number_of_prefixes_processed in VariationPhrases.eng_bot_prefixes:
+        bot_prefixes.append(number_of_prefixes_processed)
     # creating a character-by-character array from a message
     check_for_prefixes = []
     for i in input_msg:

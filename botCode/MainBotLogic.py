@@ -5,21 +5,32 @@
 # 1-mea90608744@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-import discord
-from discord.ext import commands
-from random import randint
-import datetime
-import BotConfig
-import VariationPhrases
-import MessageAnalysis
-import BotAgeCalculation
+########################################################################################################################
 
+# IMPORT MAIN LIBRARIES
+import discord as discord
+from discord.ext import commands as commands
+import BotConfig as BotConfig
+import datetime as datetime
+import MessageAnalysis as MessageAnalysis
+from threading import Thread as Thread
+import ConformityAnalysis as ConformityAnalysis
+from random import randint as randint
+import VariationPhrases as VariationPhrases
+import BotAgeCalculation as BotAgeCalculation
+
+########################################################################################################################
+
+# CREATE DISCORD CLIENT AND THE LIKE
+# create discord client
 client = discord.Client()
-
 # variability of prefixes
-client = commands.Bot(command_prefix=VariationPhrases.bot_prefixes)
+client = commands.Bot(command_prefix=VariationPhrases.ctx_bot_prefixes)
 
 
+########################################################################################################################
+
+# SENDING DATA IN TERMINAL ON STARTUP
 # connection notification
 @client.event
 async def on_ready():
@@ -35,7 +46,10 @@ async def on_ready():
     print("-----------------------------")
 
 
-# communication with the user
+########################################################################################################################
+
+# COMMUNICATION OF THE BOT WITH THE USER
+# chat between the bot and the user with a new message
 @client.event
 async def on_message(message):
     # protection for checking the message of the bot itself
@@ -46,6 +60,9 @@ async def on_message(message):
     input_msg = str(message.content)
     MessageAnalysis.start_message_analysis(input_msg)
 
+    ####################################################################################################################
+
+    # SENDING DATA IN TERMINAL
     # inbound data on demand
     if MessageAnalysis.addressing_the_bot == True:
         print(datetime.datetime.today())
@@ -54,14 +71,18 @@ async def on_message(message):
         if MessageAnalysis.msg_links != []:
             print("Youtube-links:", ", ".join(MessageAnalysis.msg_links))
 
+    ####################################################################################################################
+
+    # MAIN OUTPUT VARIABLES
     # create a reply message
     message_from_bot = []
-    # the presence of the embed for the answer
-    embed_from_bot = bool(False)
-    ru_developers_availability_emb = bool(False)
-    eng_developers_availability_emb = bool(False)
+    # create array with requested embeds
+    embed_from_bot = []
 
-    # empty message
+    ####################################################################################################################
+
+    # EMPTY MESSAGE
+    # empty message with a request
     # -->russian version
     if (MessageAnalysis.msg_commands == []) and (MessageAnalysis.addressing_the_bot == True) and (
             MessageAnalysis.prefix_number < len(VariationPhrases.ru_bot_prefixes)):
@@ -75,185 +96,189 @@ async def on_message(message):
         part_output_message = VariationPhrases.eng_empty_message_bot[response_randomizer]
         message_from_bot.append(part_output_message)
 
-    # greetings
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_greetings_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_greetings_bot) - 1)
-            part_output_message = VariationPhrases.ru_greetings_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_greetings_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_greetings_bot) - 1)
-            part_output_message = VariationPhrases.eng_greetings_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
+    ####################################################################################################################
 
-    # what is the name of the owl
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_name_of_owl_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_name_of_owl_bot) - 1)
-            part_output_message = VariationPhrases.ru_name_of_owl_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_name_of_owl_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_name_of_owl_bot) - 1)
-            part_output_message = VariationPhrases.eng_name_of_owl_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
+    # MAIN COMMUNICATION
+    # if there was an appeal to the bot and communication is possible
+    if (MessageAnalysis.msg_commands != []) and (MessageAnalysis.addressing_the_bot == True):
 
-    # who is an owl
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_who_is_an_owl_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_who_is_an_owl_bot) - 1)
-            part_output_message = VariationPhrases.ru_who_is_an_owl_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_who_is_an_owl_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_who_is_an_owl_bot) - 1)
-            part_output_message = VariationPhrases.eng_who_is_an_owl_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
+        # 1) GREETINGS
+        # owl greeting with user
+        def ru_and_eng_greetigs(quantity_commands_checks):
+            # -->russian version
+            if MessageAnalysis.msg_commands[quantity_commands_checks] in VariationPhrases.ru_greetings_users:
+                response_randomizer = randint(0, len(VariationPhrases.ru_greetings_bot) - 1)
+                part_output_message = VariationPhrases.ru_greetings_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+            # -->english version
+            if MessageAnalysis.msg_commands[quantity_commands_checks] in VariationPhrases.eng_greetings_users:
+                response_randomizer = randint(0, len(VariationPhrases.eng_greetings_bot) - 1)
+                part_output_message = VariationPhrases.eng_greetings_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
 
-    # how old is the bot
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_how_old_is_the_bot:
-            BotAgeCalculation.ru_years_old()
-            if BotAgeCalculation.ru_bot_age != []:
-                message_from_bot.append(BotAgeCalculation.ru_bot_age)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_how_old_is_the_bot:
-            BotAgeCalculation.eng_years_old()
-            if BotAgeCalculation.eng_bot_age != []:
-                message_from_bot.append(BotAgeCalculation.eng_bot_age)
-            break
-        quantity_checks += 1
+        # GREETINGS - sequential command processing for a logical structured response
+        for quantity_commands_checks in range(len(MessageAnalysis.msg_commands)):
+            Thread(target=ru_and_eng_greetigs(quantity_commands_checks)).start()
 
-    # how are you
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_how_are_you_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_how_are_you_bot) - 1)
-            part_output_message = VariationPhrases.ru_how_are_you_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_how_are_you_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_how_are_you_bot) - 1)
-            part_output_message = VariationPhrases.eng_how_are_you_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
+        # 2) ACQUAINTANCE AND THE LIKE
+        # what is the name of the owl
+        def ru_and_eng_what_is_the_name_of_the_owl(quantity_commands_checks):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_name_of_owl_users)
+            if [0, 1, 2] == ConformityAnalysis.coincidence_of_the_command:
+                response_randomizer = randint(0, len(VariationPhrases.ru_name_of_owl_bot) - 1)
+                part_output_message = VariationPhrases.ru_name_of_owl_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+            # -->english version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.eng_name_of_owl_users)
+            if [0, 1, 2] == ConformityAnalysis.coincidence_of_the_command:
+                response_randomizer = randint(0, len(VariationPhrases.eng_name_of_owl_bot) - 1)
+                part_output_message = VariationPhrases.eng_name_of_owl_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
 
-    # what are you doing
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_what_are_you_doing_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_what_are_you_doing_bot) - 1)
-            part_output_message = VariationPhrases.ru_what_are_you_doing_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_what_are_you_doing_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_what_are_you_doing_bot) - 1)
-            part_output_message = VariationPhrases.eng_what_are_you_doing_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            break
-        quantity_checks += 1
+        # who is an owl
+        def ru_and_eng_who_is_an_owl(quantity_commands_checks):
+            # -->russian version
+            if MessageAnalysis.msg_commands[quantity_commands_checks] in VariationPhrases.ru_who_is_an_owl_users:
+                response_randomizer = randint(0, len(VariationPhrases.ru_who_is_an_owl_bot) - 1)
+                part_output_message = VariationPhrases.ru_who_is_an_owl_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+            # -->english version
+            if MessageAnalysis.msg_commands[quantity_commands_checks] in VariationPhrases.eng_who_is_an_owl_users:
+                response_randomizer = randint(0, len(VariationPhrases.eng_who_is_an_owl_bot) - 1)
+                part_output_message = VariationPhrases.eng_who_is_an_owl_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
 
-    # heads or tails
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_heads_or_tails_users:
-            part_output_message = []
-            response_randomizer = randint(0, len(VariationPhrases.ru_heads_or_tails_bot) - 1)
-            part_output_message.append(VariationPhrases.ru_heads_or_tails_bot[response_randomizer])
-            heads_or_tails_randomizer = randint(0, 1)
-            if heads_or_tails_randomizer == 0:
-                part_output_message.append("Орёл)")
-            else:
-                part_output_message.append("Решка)")
-            message_from_bot.append(' '.join(part_output_message))
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_heads_or_tails_users:
-            part_output_message = []
-            response_randomizer = randint(0, len(VariationPhrases.eng_heads_or_tails_bot) - 1)
-            part_output_message.append(VariationPhrases.eng_heads_or_tails_bot[response_randomizer])
-            heads_or_tails_randomizer = randint(0, 1)
-            if heads_or_tails_randomizer == 0:
-                part_output_message.append("Head)")
-            else:
-                part_output_message.append("Tail)")
-            message_from_bot.append(' '.join(part_output_message))
-        quantity_checks += 1
+        # how old is the bot
+        def ru_and_eng_how_old_is_the_bot(quantity_commands_checks):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_how_old_is_the_bot)
+            if [0, 1] == ConformityAnalysis.coincidence_of_the_command:
+                BotAgeCalculation.ru_years_old()
+                if BotAgeCalculation.ru_bot_age != []:
+                    message_from_bot.append(BotAgeCalculation.ru_bot_age)
+            # -->english version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.eng_how_old_is_the_bot)
+            if [0, 1] == ConformityAnalysis.coincidence_of_the_command:
+                BotAgeCalculation.eng_years_old()
+                if BotAgeCalculation.eng_bot_age != []:
+                    message_from_bot.append(BotAgeCalculation.eng_bot_age)
 
-    # embed - who are your developers
-    # -->russian version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (
-            MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.ru_who_are_your_developers_users:
-            response_randomizer = randint(0, len(VariationPhrases.ru_who_are_your_developers_bot) - 1)
-            part_output_message = VariationPhrases.ru_who_are_your_developers_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            embed_from_bot = True
-            ru_developers_availability_emb = True
-            break
+        # ACQUAINTANCE AND THE LIKE - sequential command processing for a logical structured response
+        for quantity_commands_checks in range(len(MessageAnalysis.msg_commands)):
+            Thread(target=ru_and_eng_what_is_the_name_of_the_owl(quantity_commands_checks)).start()
+            Thread(target=ru_and_eng_who_is_an_owl(quantity_commands_checks)).start()
+            Thread(target=ru_and_eng_how_old_is_the_bot(quantity_commands_checks)).start()
 
-        quantity_checks += 1
-    # -->english version
-    quantity_checks = 0
-    while (quantity_checks != len(MessageAnalysis.msg_commands)) and (
-            MessageAnalysis.addressing_the_bot == True):
-        if MessageAnalysis.msg_commands[quantity_checks] in VariationPhrases.eng_who_are_your_developers_users:
-            response_randomizer = randint(0, len(VariationPhrases.eng_who_are_your_developers_bot) - 1)
-            part_output_message = VariationPhrases.eng_who_are_your_developers_bot[response_randomizer]
-            message_from_bot.append(part_output_message)
-            embed_from_bot = True
-            eng_developers_availability_emb = True
-            break
-        quantity_checks += 1
+        # 3) COMMUNICATION
+        # how are you
+        def ru_and_eng_how_are_you(quantity_commands_checks):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_how_are_you_users)
+            if [0, 1] == ConformityAnalysis.coincidence_of_the_command:
+                response_randomizer = randint(0, len(VariationPhrases.ru_how_are_you_bot) - 1)
+                part_output_message = VariationPhrases.ru_how_are_you_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+            # -->english version
+            if MessageAnalysis.msg_commands[quantity_commands_checks] in VariationPhrases.eng_how_are_you_users:
+                response_randomizer = randint(0, len(VariationPhrases.eng_how_are_you_bot) - 1)
+                part_output_message = VariationPhrases.eng_how_are_you_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
 
-    # messages with delusions
-    if (message_from_bot == []) and (MessageAnalysis.addressing_the_bot == True) and (embed_from_bot != True):
+        # what are you doing
+        def ru_and_eng_what_are_you_doing(quantity_commands_checks):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_what_are_you_doing_users)
+            if [0, 1] == ConformityAnalysis.coincidence_of_the_command:
+                response_randomizer = randint(0, len(VariationPhrases.ru_what_are_you_doing_bot) - 1)
+                part_output_message = VariationPhrases.ru_what_are_you_doing_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+            # -->english version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.eng_what_are_you_doing_users)
+            if [0, 1] == ConformityAnalysis.coincidence_of_the_command:
+                response_randomizer = randint(0, len(VariationPhrases.eng_what_are_you_doing_users) - 1)
+                part_output_message = VariationPhrases.eng_what_are_you_doing_users[response_randomizer]
+                message_from_bot.append(part_output_message)
+
+        # COMMUNICATION - sequential command processing for a logical structured response
+        for quantity_commands_checks in range(len(MessageAnalysis.msg_commands)):
+            Thread(target=ru_and_eng_how_are_you(quantity_commands_checks)).start()
+            Thread(target=ru_and_eng_what_are_you_doing(quantity_commands_checks)).start()
+
+        # 4) FEATURES
+        # heads or tails
+        def ru_and_eng_heads_or_tails(quantity_commands_checks):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_heads_or_tails_users)
+            if ([0, 1] == ConformityAnalysis.coincidence_of_the_command) or (
+                    [2, 3] == ConformityAnalysis.coincidence_of_the_command):
+                part_output_message = []
+                response_randomizer = randint(0, len(VariationPhrases.ru_heads_or_tails_bot) - 1)
+                part_output_message.append(VariationPhrases.ru_heads_or_tails_bot[response_randomizer])
+                heads_or_tails_randomizer = randint(0, 1)
+                if heads_or_tails_randomizer == 0:
+                    part_output_message.append("Орёл)")
+                else:
+                    part_output_message.append("Решка)")
+                message_from_bot.append(" ".join(part_output_message))
+            # -->english version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.eng_heads_or_tails_users)
+            if ([0, 1] == ConformityAnalysis.coincidence_of_the_command) or (
+                    [2, 3] == ConformityAnalysis.coincidence_of_the_command):
+                part_output_message = []
+                response_randomizer = randint(0, len(VariationPhrases.eng_heads_or_tails_bot) - 1)
+                part_output_message.append(VariationPhrases.eng_heads_or_tails_bot[response_randomizer])
+                heads_or_tails_randomizer = randint(0, 1)
+                if heads_or_tails_randomizer == 0:
+                    part_output_message.append("Head)")
+                else:
+                    part_output_message.append("Tail)")
+                message_from_bot.append(" ".join(part_output_message))
+
+        # FEATURES - sequential command processing for a logical structured response
+        for quantity_commands_checks in range(len(MessageAnalysis.msg_commands)):
+            Thread(target=ru_and_eng_heads_or_tails(quantity_commands_checks)).start()
+
+        # 5) EMBEDS
+        # embed - who are your developers
+        def ru_and_eng_who_are_your_developers(quantity_commands_checks, embed_from_bot):
+            # -->russian version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.ru_who_are_your_developers_users)
+            if ([0, 1] == ConformityAnalysis.coincidence_of_the_command) or (
+                    [2, 3] == ConformityAnalysis.coincidence_of_the_command):
+                response_randomizer = randint(0, len(VariationPhrases.ru_who_are_your_developers_bot) - 1)
+                part_output_message = VariationPhrases.ru_who_are_your_developers_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+                embed_from_bot.append("ru_developers_availability_emb")
+            # -->english version
+            ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
+                                                    prepared_questions_matrix=VariationPhrases.eng_who_are_your_developers_users)
+            if ([0, 1, 2] == ConformityAnalysis.coincidence_of_the_command) or (
+                    [0, 3] == ConformityAnalysis.coincidence_of_the_command):
+                response_randomizer = randint(0, len(VariationPhrases.eng_who_are_your_developers_bot) - 1)
+                part_output_message = VariationPhrases.eng_who_are_your_developers_bot[response_randomizer]
+                message_from_bot.append(part_output_message)
+                embed_from_bot.append("eng_developers_availability_emb")
+
+        # EMBEDS - sequential command processing for a logical structured response
+        for quantity_commands_checks in range(len(MessageAnalysis.msg_commands)):
+            Thread(target=ru_and_eng_who_are_your_developers(quantity_commands_checks, embed_from_bot)).start()
+
+    ####################################################################################################################
+
+    # MESSAGE WITH DILUSIONS
+    # if the bot did not recognize the message and cannot reply
+    if (message_from_bot == []) and (MessageAnalysis.addressing_the_bot == True) and (embed_from_bot == []):
         # -->russian version
         if MessageAnalysis.prefix_number < len(VariationPhrases.ru_bot_prefixes):
             response_randomizer = randint(0, len(VariationPhrases.ru_messages_with_delusions_bot) - 1)
@@ -265,28 +290,43 @@ async def on_message(message):
             part_output_message = VariationPhrases.eng_messages_with_delusions_bot[response_randomizer]
             message_from_bot.append(part_output_message)
 
+    ####################################################################################################################
+
+    # SENDING A RESPONCE
     # sending a summary message
     if message_from_bot != []:
-        await message.channel.send(' '.join(message_from_bot))
-        print("Response:", " ".join(message_from_bot))
-        print("-----------------------------")
+        await message.channel.send(" ".join(message_from_bot))
 
     # sending embeds
-    if (ru_developers_availability_emb == True) and (embed_from_bot == True):
+    if ("ru_developers_availability_emb" in embed_from_bot):
         ru_developers_emb = discord.Embed(title="OWL-ДискордБот", colour=discord.Color.blue(),
                                           url=BotConfig.link_to_bot_site)
         ru_developers_emb.add_field(name="Проектное сообщество:", value="SM_TECHNOLOGY", inline=True)
         ru_developers_emb.add_field(name="Разработчики:", value="Мачнев Егор\nДмитрий Шалимов", inline=True)
         await message.channel.send(embed=ru_developers_emb)
-    if (eng_developers_availability_emb == True) and (embed_from_bot == True):
+    if ("eng_developers_availability_emb" in embed_from_bot):
         eng_developers_emb = discord.Embed(title="OWL-DiscordBot", colour=discord.Color.blue(),
                                            url=BotConfig.link_to_bot_site)
         eng_developers_emb.add_field(name="Project community:", value="SM_TECHNOLOGY", inline=True)
         eng_developers_emb.add_field(name="Developers:", value="Machnev Egor\nDmitriy Schalimov", inline=True)
         await message.channel.send(embed=eng_developers_emb)
 
+    ####################################################################################################################
+
+    # SENDING DATA IN TERMINAL
+    # sending data to the terminal about the final message
+    if message_from_bot != []:
+        print("Response:", " ".join(message_from_bot))
+        if embed_from_bot != []:
+            print("Embeds:", ", ".join(embed_from_bot))
+        print("-----------------------------")
+
+
+########################################################################################################################
 
 client.run(BotConfig.BotToken)
+
+########################################################################################################################
 
 # Authors of the project:
 # 1-MachnevEgor_https://vk.com/machnev_egor

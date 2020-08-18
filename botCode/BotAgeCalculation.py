@@ -5,8 +5,8 @@
 # 1-mea90608744@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-from random import randint
-import datetime
+from random import randint as randint
+import datetime as datetime
 
 # bot creation date
 year_of_foundation = 2020
