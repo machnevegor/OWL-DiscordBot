@@ -5,7 +5,7 @@
 @: 1-mea90608744@gmail.com
 @: 2-dmitriy-shalimov@yandex.ru
 
-python MainBotLogic.py
+py MainBotLogic.py --user
 
 @: Authors of the project:
 @: 1-MachnevEgor_https://vk.com/machnev_egor
