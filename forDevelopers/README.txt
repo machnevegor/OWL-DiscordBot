@@ -2,7 +2,7 @@
 # 1-MachnevEgor_https://vk.com/machnev_egor
 # 2-DmitryShalimov_https://vk.com/lookatstat
 # Contacts in email:
-# 1-mea90608744@gmail.com
+# 1-meb.official.com@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
 Before changing the code and making your own changes, you need to install the latest version of the python 
@@ -15,5 +15,5 @@ P.S.If you didn't succeed, you can watch video courses on the Internet or write 
 # 1-MachnevEgor_https://vk.com/machnev_egor
 # 2-DmitryShalimov_https://vk.com/lookatstat
 # Contacts in email:
-# 1-mea90608744@gmail.com
+# 1-meb.official.com@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
