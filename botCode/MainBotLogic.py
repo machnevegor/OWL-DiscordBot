@@ -297,14 +297,22 @@ async def on_message(message):
     # MESSAGE WITH DELUSIONS
     # if the bot did not recognize the message and cannot reply
     if (message_from_bot == []) and (MessageAnalysis.addressing_the_bot == True) and (embed_from_bot == []):
+        # -->ctx version
+        if MessageAnalysis.prefix_number < len(VariationPhrases.ctx_bot_prefixes):
+            response_randomizer = randint(0, len(VariationPhrases.ctx_messages_with_delusions_bot) - 1)
+            part_output_message = VariationPhrases.ctx_messages_with_delusions_bot[response_randomizer]
+            message_from_bot.append(part_output_message)
         # -->russian version
-        if (MessageAnalysis.prefix_number - len(VariationPhrases.ctx_bot_prefixes)) < len(
-                VariationPhrases.ru_bot_prefixes):
+        if ((MessageAnalysis.prefix_number - len(VariationPhrases.ctx_bot_prefixes)) < len(
+                VariationPhrases.ru_bot_prefixes)) and (
+                MessageAnalysis.prefix_number >= len(VariationPhrases.ctx_bot_prefixes)):
             response_randomizer = randint(0, len(VariationPhrases.ru_messages_with_delusions_bot) - 1)
             part_output_message = VariationPhrases.ru_messages_with_delusions_bot[response_randomizer]
             message_from_bot.append(part_output_message)
         # -->english version
-        else:
+        if ((MessageAnalysis.prefix_number - len(VariationPhrases.ctx_bot_prefixes)) >= len(
+                VariationPhrases.ru_bot_prefixes)) and (
+                MessageAnalysis.prefix_number >= len(VariationPhrases.ctx_bot_prefixes)):
             response_randomizer = randint(0, len(VariationPhrases.eng_messages_with_delusions_bot) - 1)
             part_output_message = VariationPhrases.eng_messages_with_delusions_bot[response_randomizer]
             message_from_bot.append(part_output_message)
