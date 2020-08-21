@@ -5,7 +5,7 @@
 # 1-meb.official.com@gmail.com
 # 2-dmitriy-shalimov@yandex.ru
 
-# https://discord.com/api/oauth2/authorize?client_id=734057836652396546&permissions=1345325632&scope=bot
+# https://discord.com/api/oauth2/authorize?client_id=734057836652396546&permissions=36891456&scope=bot
 BotToken = ""  # bot token
 link_to_bot_site = ""  # link to the official site of the bot
 
