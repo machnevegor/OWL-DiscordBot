@@ -28,7 +28,8 @@ def find_command_matches(msg_command, prepared_questions_matrix, array_required_
                 question_from_prepared_questions_array.append(question_letter_by_letter_overwrite)
             # analysis for coincidence
             correct_quantity_checks = 0
-            for quantity_letters_passed_in_command in range(len(letter_by_letter_command)):
+            quantity_letters_passed_in_command = 0
+            while quantity_letters_passed_in_command != len(letter_by_letter_command):
                 if letter_by_letter_command[quantity_letters_passed_in_command] == \
                         question_from_prepared_questions_array[correct_quantity_checks]:
                     correct_quantity_checks += 1
@@ -40,7 +41,10 @@ def find_command_matches(msg_command, prepared_questions_matrix, array_required_
                         break
                 # other cases with small coincidences
                 else:
+                    if correct_quantity_checks > 0:
+                        quantity_letters_passed_in_command -= 1
                     correct_quantity_checks = 0
+                quantity_letters_passed_in_command += 1
     # movement by the array with combinations
     for quantity_variations_checks in range(len(array_required_matches)):
         # create variable to count matches
