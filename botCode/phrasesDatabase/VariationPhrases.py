@@ -50,7 +50,7 @@ ru_name_of_owl_bot = ["Хмм, не задавалась таким вопрос
                       "Некоторые друзья зовут меня М.П. Терентьев...",
                       "Мои разработчики были настолько заняты разработкой алгоритмов, что решили забить на моё имя, но ты можешь называть меня просто Совой)"]
 eng_name_of_owl_bot = ["Hmm, I didn't ask myself such questions)", "Look in users)",
-                       "My developers were so busy developing algorithms that they decided to forget my name, but you can just call me Owl)?"]
+                       "My developers were so busy developing algorithms that they decided to forget my name, but you can just call me Owl)"]
 
 # who is an owl from users
 ru_who_is_an_owl_users = ["ктоты", "тыкто", "ктотытакой", "тыктотакой", "ктотытакая", "тыктотакая", "чтоты", "тычто",
