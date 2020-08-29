@@ -87,7 +87,7 @@ ru_what_are_you_doing_bot = ["Да так, ничего особого, вклю
                              "Наелась и сплю."]
 eng_what_are_you_doing_bot = ["Yes, nothing special, I just turn on music on different servers...",
                               "My programmers cannot understand what the error is, so we are trying to understand...",
-                              "I am just answering you)", "I eat and sleep)"]
+                              "I am just answering you)"]
 
 ########################################################################################################################
 
