@@ -233,7 +233,7 @@ async def on_message(message):
         # 4) FEATURES
         # heads or tails
         def ru_and_eng_heads_or_tails(quantity_commands_checks):
-            # -->russian version
+            # -->russian version 
             ConformityAnalysis.find_command_matches(msg_command=MessageAnalysis.msg_commands[quantity_commands_checks],
                                                     prepared_questions_matrix=VariationPhrases.ru_heads_or_tails_users,
                                                     array_required_matches=[[0, 1], [2, 3]])
