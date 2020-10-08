@@ -72,7 +72,7 @@ eng_how_old_is_the_bot = [["how"], ["old"]]
 
 # how are you from users
 ru_how_are_you_users = [["как"], ["дела", "сам", "поживаешь"]]
-eng_how_are_you_users = ["howareyou", "howru", "howyou", "howu", "whatsup", "howstricks", "howwagstheworld",
+eng_how_are_you_users = ["howareyou", "howareu", "howru", "howyou", "howu", "whatsup", "howstricks", "howwagstheworld",
                          "howfaresit"]
 # reply how are you from thr bot
 ru_how_are_you_bot = ["Нормально, а у тебя?", "Хорошо, а ты как?", "Всё отлично)"]
