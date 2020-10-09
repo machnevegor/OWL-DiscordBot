@@ -20,7 +20,7 @@ eng_bot_prefixes = ["owl"]
 
 # the status of the bot
 game_bot_status = ["kostyl.net", "The nerves of the developers"]
-watch_bot_status = ["Youtube: How to fix discord.py?",
+watch_bot_status = ["YouTube: How to fix discord.py?",
                     "Riddles of the hole", "Richard Sapogov's Evening Show"]
 stream_bot_status = ["Developers suffering",
                      "Review of the Hindus who made a home underground"]
