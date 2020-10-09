@@ -12,7 +12,7 @@ import discord as discord
 from discord import Activity, ActivityType
 from discord.ext import commands as commands
 from configurationFile import BotConfig as BotConfig
-from time import sleep as time_sleep
+from asyncio import sleep as asyncio_sleep
 import datetime as datetime
 from analysisCode import MessageAnalysis as MessageAnalysis
 from threading import Thread as Thread
@@ -47,12 +47,19 @@ async def on_ready():
     print(f"|♡|All friends of the bot:\n|♡|➳{members}")
     print("-----------------------------")
     # the status of the bot
+    client.loop.create_task(status_task())
+    
+########################################################################################################################
+
+# THE STATUS OF THE BOT
+# asynchronous function that changes the bot status over time
+async def status_task():
     while True:
         status_correspondence_randomizer = randint(0, 3)
         if status_correspondence_randomizer == 0:
             status_text_randomizer = randint(0, len(VariationPhrases.game_bot_status) - 1)
             status_text = VariationPhrases.game_bot_status[status_text_randomizer]
-            await client.change_presence(activity=discord.Game(name=status_text))
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=status_text))
         elif status_correspondence_randomizer == 1:
             status_text_randomizer = randint(0, len(VariationPhrases.watch_bot_status) - 1)
             status_text = VariationPhrases.watch_bot_status[status_text_randomizer]
@@ -60,12 +67,12 @@ async def on_ready():
         elif status_correspondence_randomizer == 2:
             status_text_randomizer = randint(0, len(VariationPhrases.stream_bot_status) - 1)
             status_text = VariationPhrases.stream_bot_status[status_text_randomizer]
-            await client.change_presence(activity=discord.Streaming(name=status_text))
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name=status_text))
         elif status_correspondence_randomizer == 3:
             status_text_randomizer = randint(0, len(VariationPhrases.listen_bot_status) - 1)
             status_text = VariationPhrases.listen_bot_status[status_text_randomizer]
             await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=status_text))
-        time_sleep(5 * 60)
+        await asyncio_sleep(5 * 60)
 
 
 ########################################################################################################################
