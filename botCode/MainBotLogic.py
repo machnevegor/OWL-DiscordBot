@@ -9,8 +9,10 @@
 
 # IMPORT MAIN LIBRARIES
 import discord as discord
+from discord import Activity, ActivityType
 from discord.ext import commands as commands
 from configurationFile import BotConfig as BotConfig
+from time import sleep
 import datetime as datetime
 from analysisCode import MessageAnalysis as MessageAnalysis
 from threading import Thread as Thread
@@ -44,6 +46,24 @@ async def on_ready():
     members = "\n|♡|➳".join([guild.name for guild in client.guilds])
     print(f"|♡|All friends of the bot:\n|♡|➳{members}")
     print("-----------------------------")
+    # the status of the bot
+    while True:
+        status_text_randomizer = randint(0, len(VariationPhrases.game_bot_status) - 1)
+        status_text = VariationPhrases.game_bot_status[status_text_randomizer]
+        await client.change_presence(activity=discord.Game(name=status_text))
+        sleep(5 * 60)
+        status_text_randomizer = randint(0, len(VariationPhrases.watch_bot_status) - 1)
+        status_text = VariationPhrases.watch_bot_status[status_text_randomizer]
+        await client.change_presence(status=discord.Status.idle, activity=Activity(name=status_text, type=ActivityType.watching))
+        sleep(5 * 60)
+        status_text_randomizer = randint(0, len(VariationPhrases.stream_bot_status) - 1)
+        status_text = VariationPhrases.stream_bot_status[status_text_randomizer]
+        await client.change_presence(activity=discord.Streaming(name=status_text))
+        sleep(5 * 60)
+        status_text_randomizer = randint(0, len(VariationPhrases.listen_bot_status) - 1)
+        status_text = VariationPhrases.listen_bot_status[status_text_randomizer]
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=status_text))
+        sleep(5 * 60)
 
 
 ########################################################################################################################
