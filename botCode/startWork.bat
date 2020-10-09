@@ -5,7 +5,8 @@
 @: 1-meb.official.com@gmail.com
 @: 2-dmitriy-shalimov@yandex.ru
 
-py MainBotLogic.py --user
+python MainBotLogic.py --user
+pause
 
 @: Authors of the project:
 @: 1-MachnevEgor_https://vk.com/machnev_egor
