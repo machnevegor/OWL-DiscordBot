@@ -64,7 +64,7 @@ async def status_task():
         elif status_correspondence_randomizer == 1:
             status_text_randomizer = randint(0, len(VariationPhrases.watch_bot_status) - 1)
             status_text = VariationPhrases.watch_bot_status[status_text_randomizer]
-            await client.change_presence(status=discord.Status.idle, activity=Activity(name=status_text, type=ActivityType.watching))
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=status_text))
         elif status_correspondence_randomizer == 2:
             status_text_randomizer = randint(0, len(VariationPhrases.stream_bot_status) - 1)
             status_text = VariationPhrases.stream_bot_status[status_text_randomizer]
