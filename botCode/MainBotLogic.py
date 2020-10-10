@@ -55,6 +55,7 @@ async def on_ready():
 # asynchronous function that changes the bot status over time
 async def status_task():
     while True:
+        # generating a new status
         status_correspondence_randomizer = randint(0, 3)
         if status_correspondence_randomizer == 0:
             status_text_randomizer = randint(0, len(VariationPhrases.game_bot_status) - 1)
