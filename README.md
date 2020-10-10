@@ -5,9 +5,9 @@ In directory documentation you can see our documentation.
 
 https://www.youtube.com/watch?v=i1bKezBAj7A - to understand why we so jokingly named the bot).
 
-Authors of the projects: 
+# Authors of the projects: 
 1-MachnevEgor_https://vk.com/machnev_egor 
 2-DmitryShalimov_https://vk.com/lookatstat 
-Contacts in email: 
+# Contacts in email: 
 1-meb.official.com@gmail.com 
 2-dmitriy-shalimov@yandex.ru
