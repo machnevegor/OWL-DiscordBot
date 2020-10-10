@@ -72,6 +72,11 @@ async def status_task():
             status_text_randomizer = randint(0, len(VariationPhrases.listen_bot_status) - 1)
             status_text = VariationPhrases.listen_bot_status[status_text_randomizer]
             await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=status_text))
+        # sending data in terminal
+        print(datetime.datetime.today())
+        print(f"New status: {status_text}")
+        print("-----------------------------")
+        # async sleep
         await asyncio_sleep(5 * 60)
 
 
