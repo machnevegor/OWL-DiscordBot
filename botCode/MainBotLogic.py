@@ -44,7 +44,7 @@ async def on_ready():
     print("-----------------------------")
     # a list of all participants who use the bot while connecting to the network
     members = "\n|♡|➳".join([guild.name for guild in client.guilds])
-    print(f"|♡|All friends of the bot:\n|♡|➳{members}")
+    print(f"|♡|All friends of the bot:\n|♡|➳ {members}")
     print("-----------------------------")
     # the status of the bot
     client.loop.create_task(status_task())
